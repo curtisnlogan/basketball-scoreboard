@@ -1,0 +1,377 @@
+/* 
+pseudocode
+* https://www.figma.com/design/q4OWHLKgLRUHcVXzvSktzE/Basketball-Scoreboard--Copy-?node-id=0-1&p=f&t=o2c3PoZcZ6ijBNBi-0
+*/
+
+/* 'body' always goes at top for 'margin: 0'; */
+body {
+    /* gets rid of dated margin, relic from the early days of the web */
+    /* 'auto' on left and right of body centers content irregardless of window size */
+    margin: 0 auto;
+    /* from figma w and h in 'px' important */
+    /* originally forgot 'px' and got a notably different result */
+    width: 575px;
+    height: 385px;
+    /* changed from figma must add '#' important for hex */
+    background-color: #2e2b2b;
+}
+
+/* 
+* '@font-face' near top
+* rule must be used to register fonts that are new to the browser
+* you first provide the loction of the font locally with
+'src: url();' 
+* then you give it a name with 'font-family: '';'
+* after these two things are completed the font can now be called in the rest
+of your CSS like any other */
+@font-face {
+    font-family: 'CursedTimerULiL';
+    /* remember the folder must be included in the path */
+    src: url(/fonts/CursedTimerULiL.ttf);
+}
+
+/* 
+both 'home' and 'guest' text contains one class 
+as they are positioned in tandem and are styled the same in css
+*/
+.home-guest-div {
+    /* a way to place content next to one another, instead of below by default */
+    display: flex;
+    /* creates some room between elements in this <div> */
+    justify-content: space-around;
+    /* figma */
+    color: #EEEEEE;
+    font-family: Helvetica;
+    font-size: 25px;
+    /*
+    * figma using 'option' key whilst hovering above layers 
+    * used as a guide though not to be taken literally
+    * i discovered you can use minus values 
+    */
+    margin: -5px;
+}
+/* 
+* same principle as with 'home-guest-div' put both in a single <div> for flex 
+* not needed for anything else but still necessary for that one thing
+*/
+.scores-div {
+    display: flex;
+    justify-content: center;
+}
+/* each sides score also has own child <div> for styling */
+.home-score {
+    background-color: #080001;
+    width: 155px;
+    height: 120px;
+    /* text color */
+    color: #F94F6D;
+    font-size: 50px;
+    text-align: center;
+    /* adding custom font part of assignment */
+    font-family: CursedTimerULiL;
+    /* 'padding' controls space between content and border */
+    padding: 20px 40px 2px 20px;
+    /* 
+    'The border-radius CSS property 
+    rounds the corners of an element's outer border edge.' 
+    */
+    border-radius: 5px;
+}
+/* extra challenge i gave myself */
+.period-counter {
+    background-color: #080001;
+    margin: 0 65px;
+    width: 100px;
+    height: 120px;
+    color: #F94F6D;
+    font-size: 50px;
+    text-align: center;
+    font-family: CursedTimerULiL;
+    padding: 20px 20px 2px 0;
+    border-radius: 5px;
+}
+/* 
+if not included default text of '1' appears in the wrong place
+perhaps because it defaults to some other value 
+*/
+.period-counter h3 {
+    margin: 0;
+}
+
+.guest-score {
+    background-color: #080001;
+    width: 155px;
+    height: 120px;
+    color: #F94F6D;
+    font-size: 50px;
+    text-align: center;
+    font-family: CursedTimerULiL;
+    padding: 20px 40px 2px 20px;
+    border-radius: 5px;
+}
+/* 
+* whilst some css property-value pairs are inhereted from a parent div class like 'font-family'
+the positioning of the default html text in the <h3> elements wasnt
+this is why originally the '0' looked out of place
+*/
+.home-score h3 {
+    margin: 0;
+    }
+
+.guest-score h3 {
+    margin: 0;
+    }
+/* 
+* group both home and guest plus points buttons in one <div> for flex
+* this name originally conflated kebab-case and camelCase
+*/
+.plus-points-columns {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+}
+/* 
+* somewhat cryptic naming
+think better next time
+ */
+.h1-column button {
+    font-family: CursedTimerULiL;
+    font-size: 18px;
+    background-color: #080001;
+    color: #9AABD8;
+    border: 2px solid #9AABD8;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    margin: 0 20px 0 0;
+}
+
+.h2-column button {
+    font-family: CursedTimerULiL;
+    font-size: 18px;
+    background-color: #080001;
+    color: #9AABD8;
+    border: 2px solid #9AABD8;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    margin: 0 20px 0 0;
+}
+
+.h3-column button {
+    font-family: CursedTimerULiL;
+    font-size: 18px;
+    background-color: #080001;
+    color: #9AABD8;
+    border: 2px solid #9AABD8;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    margin: 0 200px 0 0;
+}
+
+.g1-column button {
+    font-family: CursedTimerULiL;
+    font-size: 18px;
+    background-color: #080001;
+    color: #9AABD8;
+    border: 2px solid #9AABD8;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    margin: 0 20px 0 0;
+}
+
+.g2-column button {
+    font-family: CursedTimerULiL;
+    font-size: 18px;
+    background-color: #080001;
+    color: #9AABD8;
+    border: 2px solid #9AABD8;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    margin: 0 20px 0 0;
+}
+
+.g3-column button {
+    font-family: CursedTimerULiL;
+    font-size: 18px;
+    background-color: #080001;
+    color: #9AABD8;
+    border: 2px solid #9AABD8;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+}
+
+.timeout-columns {
+    display: flex;
+    justify-content: center;
+}
+
+.onehtimeout button {
+    background-color: #080001;
+    width: 60px;
+    height: 60px;
+    margin: 0 25px 0 0;
+    border-radius: 5px;
+    border: solid black;
+}
+
+.twohtimeout button {
+    background-color: #080001;
+    width: 60px;
+    height: 60px;
+    margin: 0 25px 0 0;
+    border-radius: 5px;
+    border: solid black;
+}
+
+.threehtimeout button {
+    background-color: #080001;
+    width: 60px;
+    height: 60px;
+    margin: 0 200px 0 0;
+    border-radius: 5px;
+    border: solid black;
+}
+
+.onegtimeout button {
+    background-color: #080001;
+    width: 60px;
+    height: 60px;
+    margin: 0 25px 0 0;
+    border-radius: 5px;
+    border: solid black;
+}
+
+.twogtimeout button {
+    background-color: #080001;
+    width: 60px;
+    height: 60px;
+    margin: 0 25px 0 0;
+    border-radius: 5px;
+    border: solid black;
+}
+
+.threegtimeout button {
+    background-color: #080001;
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    border: solid black;
+}
+
+.game-timer {
+    display: flex;
+    /* requires flex to be used */
+    justify-content: center;
+    margin: 30px 0 -275px 0;
+}
+
+.game-timer button {
+    background-color: #080001;
+    width: 400px;
+    height: 200px;
+    color: #F94F6D;
+    font-size: 125px;
+    font-family: CursedTimerULiL;
+    border-radius: 5px;
+    border: solid black;
+    
+}
+.fouls-columns {
+    display: flex;
+    justify-content: center;
+}
+
+.hfoul-counter {
+    background-color: #080001;
+    margin: 250px 525px 0 10px;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    color: #F94F6D;
+    font-size: 50px;
+    text-align: center;
+    font-family: CursedTimerULiL;
+    padding: 40px 100px 100px 20px;
+    border-radius: 5px;
+}
+
+.gfoul-counter {
+    background-color: #080001;
+    margin: 250px 0 0 -40px;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    color: #F94F6D;
+    font-size: 50px;
+    text-align: center;
+    font-family: CursedTimerULiL;
+    padding: 40px 100px 100px 20px;
+    border-radius: 5px;
+}
+
+.hfoul-counter h3 {
+    margin: 0;
+    font-size: 50px;
+    }
+    
+.gfoul-counter h3 {
+    margin: 0;
+    font-size: 50px;
+    }
+
+.fouls-btns-columns {
+    display: flex;
+    justify-content: center;
+}
+
+.hfoul-btn button {
+    font-family: CursedTimerULiL;
+    margin: 35px 480px 0 15px;
+    font-size: 18px;
+    background-color: #080001;
+    color: #9AABD8;
+    border: 2px solid #9AABD8;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+}
+
+.gfoul-btn button {
+    font-family: CursedTimerULiL;
+    margin: 35px 0 0 0;
+    font-size: 18px;
+    background-color: #080001;
+    color: #9AABD8;
+    border: 2px solid #9AABD8;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+}
+/* 
+<div> container key here as it allows me to easily 
+align the button to he center of the window 
+ */
+.new-game {
+    display: flex;
+    justify-content: center;
+}
+
+.new-game button {
+    /* something new i learned through using intellisense like features of this IDE
+    1 = opaque floats = inbetween 0 = transparent */
+    opacity: calc(0.50);
+    margin: 125px 0 200px 0;
+    font-size: 20px;
+    background-color: #080001;
+    color: white;
+    width: 175px;
+    height: 50px;
+    /* sleek rounded border edges */
+    border-radius: 5px;
+    border: solid black;
+}

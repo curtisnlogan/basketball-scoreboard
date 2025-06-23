@@ -1,0 +1,118 @@
+<!--
+pseudocode
+https://scorecount.com/basketball/fiba-basketball-scoreboard.jpg
+    
+TODO
+game timer
+-->
+
+<!DOCTYPE html>
+<html>
+    <!-- <head> = brains of a html file -->
+    <head>
+        <!-- links to seperate css file in-which its best practice to contain all css -->
+        <link rel='stylesheet' href='/css/index.css'>
+    </head>
+    <!-- everything that the user will see (asides from the tab bar) is contained in <body> -->
+    <body>
+        <!-- both 'home' 'guest' in parent <div> for flex
+            use classes over ids as a rule
+            can target the two 'h2' specifically in css using '.home-guest-text h2'
+            not all properties carry over from the parent <div> container -->
+        <div class='home-guest-div'>
+            <h2>HOME</h2>
+            <h2>GUEST</h2>
+        </div>
+        <!-- each score counter has own child <div> so i can target them specifically 
+            in my js file -->
+        <div class='scores-div'>
+            <div class='home-score'>
+                <!-- went with <h3> here as they feel like a child of the h2 headers above -->
+                <h3>0</h3>
+            </div>
+            <div class='period-counter'>
+                <h3>1</h3>
+            </div>
+            <div class='guest-score'>
+                <h3>0</h3>
+            </div>
+        </div>
+        <div class='plus-points-columns'>
+            <!-- not optimal but for this tutorial 'onclick=""' used for dom
+            modern frontend devs use 'addEventListener' in the js file
+            -->
+            <!-- be sure to think about naming carefully from get-go
+            acceptable naming here but could be less obscure -->
+            <div class='h1-column'>
+                <!-- initially got my string literals wrong on these function caalls
+                tried to use '' on both the outer and inner elements
+                need to use '' or "" on outer then the other inside -->
+                <button onclick='plusScore("home", "1")'>+1</button>
+            </div>
+            <div class='h2-column'>
+                <button onclick='plusScore("home", "2")'>+2</button>
+            </div>
+            <div class='h3-column'>
+                <button onclick='plusScore("home", "3")'>+3</button>
+            </div>
+            <div class='g1-column'>
+                <button onclick='plusScore("guest", "1")'>+1</button>
+            </div>
+            <div class='g2-column'>
+                <button onclick='plusScore("guest", "2")'>+2</button>
+            </div>
+            <div class='g3-column'>
+                <button onclick='plusScore("guest", "3")'>+3</button>
+            </div>
+        </div>
+        <!-- a self-created challenge on top of the original assignment -->
+        <div class='timeout-columns'>
+            <div class='onehtimeout'>
+                <button onclick="plusTimeout('home', 'onehtimeout')"></button>
+            </div>
+            <div class='twohtimeout'>
+                <button onclick="plusTimeout('home', 'twohtimeout')"></button>
+            </div>
+            <div class='threehtimeout'>
+                <button onclick="plusTimeout('home', 'threehtimeout')"></button>
+            </div>
+            <div class='onegtimeout'>
+                <button onclick="plusTimeout('guest', 'onegtimeout')"></button>
+            </div>
+            <div class='twogtimeout'>
+                <button onclick="plusTimeout('guest', 'twogtimeout')"></button>
+            </div>
+            <div class='threegtimeout'>
+                <button onclick="plusTimeout('guest', 'threegtimeout')"></button>
+            </div>
+        </div>
+        <!-- TODO -->
+        <div class='game-timer'>
+            <button onclick=''>00:00</button>
+        </div>
+        <!-- another self-created challenge -->
+        <div class='fouls-columns'>
+            <div class='hfoul-counter'>
+                <h3>0</h3>
+            </div>
+            <div class='gfoul-counter'>
+                <h3>0</h3>
+            </div>
+        </div>
+        <div class='fouls-btns-columns'>
+            <div class='hfoul-btn'>
+                <button onclick='plusFouls("home")'>+1</button>
+            </div>
+            <div class='gfoul-btn'>
+                <button onclick='plusFouls("guest")'>+1</button>
+            </div>
+        </div>
+        <!-- suggested additional challenge from original assignee -->
+        <div class='new-game'>
+            <button onclick='newGame()'>NEW GAME</button>
+        </div>
+        <!-- 'defer' tells the browser to fully parse the html before loading the script
+        <script> always goes above the closing </body> element in a html file -->
+        <script src='/script/index.js' defer></script>
+    </body>
+</html>
