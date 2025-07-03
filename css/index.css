@@ -95,7 +95,7 @@ if not included default text of '1' appears in the wrong place
 perhaps because it defaults to some other value 
 */
 .period-counter h3 {
-    margin: 0;
+    margin: inherit;
 }
 
 .guest-score {
